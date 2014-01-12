@@ -1,0 +1,59 @@
+#-------------------------------------------------------------------------------
+# Name:        module1
+# Purpose:
+#
+# Author:      Admin
+#
+# Created:     12/12/2013
+# Copyright:   (c) Admin 2013
+# Licence:     <your licence>
+#-------------------------------------------------------------------------------
+
+
+def getstr(s,l):
+    return s[:l//2]
+
+def mid(s,l):
+    return s[(l-1)//2]
+
+def mid1(s,l):
+     return s[(l-1)//2+1]
+
+def getnum(s,l):
+    return s[l]
+
+def np(num):
+    l=len(num)
+    m=mid(num,l)
+    k=(l-1)//2
+    if(l%2!=0):
+        inc=int(pow(10,l//2))
+        new=getstr(num,l)+m+getstr(num,l)[::-1]
+    else:
+        inc=int(1.1*pow(10,l//2))
+        new=getstr(num,l)+getstr(num,l)[::-1]
+    if(new>num):
+        return new
+    if m!='9':
+        p=str(int(new)+inc)
+        return p
+    elif m=='9':
+         while getnum(new,k) == '9':
+            k+=1
+            if(k==l):
+                break
+         p=str(int(new)+int(pow(10,l-k)))
+         return np(p)
+    else:
+        return getstr(str(int(new)+inc),l)
+
+
+t=int(input())
+while t:
+    t-=1
+    s=input()
+    print(int(np(s)))
+
+
+
+

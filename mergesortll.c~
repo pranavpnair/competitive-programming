@@ -1,0 +1,36 @@
+Node* MergeLists(Node *headA, Node* headB)
+{
+  // This is a "method-only" submission. 
+  // You only need to complete this method 
+  if(headA==NULL)
+  	return headB;
+  else if(headB==NULL)
+  	return headA;
+  Node *p,*q;
+  q=headB->next;
+  while(headB->data <= headA->data)
+  {
+  	headB->next=headA;
+  	headA=headB;
+  	headB=q;
+  	q=headB->next;
+  }
+  p=headA->next;
+  while(p!=NULL || headB!=NULL)
+  {
+  	if(headB->data > p->data)
+  	{
+  		p=p->next;
+  		headA=headA->next;
+  	}
+  	else
+  	{
+  		headA->next=headB;
+  		headB->next=p;
+  		headB=q;
+  		q=headB->next;
+  		headA=headA->next;
+  	}
+  	
+  }
+}

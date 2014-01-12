@@ -1,0 +1,23 @@
+
+
+
+n=int(input())
+while n:
+    n-=1
+    a,b=input().split()
+    c=a[::-1]
+    d=b[::-1]
+    i=0
+    j=0
+    while c[i]=='0':
+        i+=1
+    while d[j]=='0':
+        j+=1
+    sum=str(int(c[i:])+int(d[j:]))
+    sumr=sum[::-1]
+    k=0
+    while sumr[k]=='0':
+        k+=1
+    print(int(sumr[k:]))
+
+
